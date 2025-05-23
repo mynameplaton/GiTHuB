@@ -1,15 +1,23 @@
-1. Как будем хранить слова и их значение? Какой тип данных нам может помочь?
+import telebot
 
-meme_dict = {
-            "КРИНЖ": "Что-то очень странное или стыдное",
-            "ЛОЛ": "Что-то очень смешное"
-            }
-2. Как будем получать запрос пользователя?
+# Инициализация бота с использованием его токена
+bot = telebot.TeleBot("7686851666:AAH22jq_bNH8V_INspdq5HuQDmVmRH2Dytk")
 
-word = input("Введите непонятное слово (большими буквами!): ")
-3. Как будем получать значение и отдавать его пользователю?
+# Обработчик команды '/start' и '/hello'
+@bot.message_handler(commands=['start', 'hello'])
+def send_welcome(message):
+    bot.reply_to(message, f'Привет! Я бот {bot.get_me().first_name}!')
 
-if word in meme_dict.keys():
-    print(meme_dict[word])
-else:
-    print("ERRoR, word not found")
+# Обработчик команды '/heh'
+@bot.message_handler(commands=['heh'])
+def send_heh(message):
+    count_heh = int(message.text.split()[1]) if len(message.text.split()) > 1 else 5
+    bot.reply_to(message, "he" * count_heh)
+
+# Запуск бота
+bot.polling()
+# errewer
+def add(x, y):
+    return x, y
+lambda x,y: x+y
+add(2,3)
