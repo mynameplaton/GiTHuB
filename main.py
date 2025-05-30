@@ -14,6 +14,10 @@ def send_heh(message):
     count_heh = int(message.text.split()[1]) if len(message.text.split()) > 1 else 5
     bot.reply_to(message, "he" * count_heh)
 
+@bot.message_handler(commands=['mem'])
+def send_mem(message):
+    with open('images/mem1.jpg', 'rb') as f:  
+        bot.send_photo(message.chat.id, f)  
 # Запуск бота
 bot.polling()
 # errewer
